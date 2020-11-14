@@ -24,5 +24,20 @@ for ($code=0; $code < 256; $code++) {
     $ipad .= chr($code ^ 0x36);
 }
 
+/**
+ * Make the XOR between $key and $pad
+ *
+ * @param string $key The secret key
+ * @param string $pad Is equal to $opad or $ipad
+ *
+ * @return string
+ */
+function _xor($key, $pad) {
+    global $ascii, $opad, $ipad;
+    if (in_array($pad, [$opad, $ipad])) {
+        return strtr($key, $ascii, $pad);
+    }
+}
+
 
 ?>
