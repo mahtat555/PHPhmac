@@ -6,6 +6,20 @@
  * standard <<Key hash message authentication code (HMAC) (FIPS PUB 198)>>.
  */
 
+// List of internal block sizes of the hash algorithm in bytes.
+const BLOCK_SIZES = [
+    'md5' => 64,
+    'sha1' => 64,
+    'sha224' => 64,
+    'sha256'=> 64,
+    'sha384' => 128,
+    'sha512' => 128,
+    'sha3-224' => 144,
+    'sha3-256' => 136,
+    'sha3-384' => 104,
+    'sha3-512' => 72
+];
+
 
 // All ASCII characters from 0 to 255
 $ascii = null;
