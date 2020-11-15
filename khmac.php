@@ -54,4 +54,16 @@ function _xor($key, $pad) {
 }
 
 
+/**
+ * Class KHMAC.
+ *
+ * This class allows you to the generation of a MAC (Message Authentication
+ * Code) from a cryptographic hash function.
+ */
+class KHMAC
+{
+
+}
+
+
 ?>
