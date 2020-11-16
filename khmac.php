@@ -62,6 +62,18 @@ function _xor($key, $pad) {
  */
 class KHMAC
 {
+    /**
+     * @var HashContext
+     */
+    private $_inner;
+    /**
+     * @var HashContext
+     */
+    private $_outer;
+    /**
+     * @var string A hash name
+     */
+    private $_hashname;
 
 }
 
