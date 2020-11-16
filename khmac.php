@@ -75,6 +75,52 @@ class KHMAC
      */
     private $_hashname;
 
+
+    /**
+     * Create a new KHMAC object.
+     *
+     * @param string $key The secret key. This must be kept secret
+     * @param string $msg The data where HMAC is calculated
+     * @param string $hashname A hash function name
+     */
+    public function __construct($key = "", $msg = "", $hashname = "sha1") {
+        global $opad, $ipad;
+        $this->_hashname = $hashname;
+
+        // Test if the key is a string
+        if (!is_string($key)) {
+            throw new Exception("This key is invalid !");
+        }
+
+        // Test if the message is a string
+        if (!is_string($msg)) {
+            throw new Exception("This message is not a string !");
+        }
+
+        // Test if the hash function is supported
+        if (!array_key_exists($hashname, BLOCK_SIZES)) {
+            throw new Exception("Unsupported hash type !");
+        }
+
+        $this->_outer = hash_init($hashname);
+        $this->_inner = hash_init($hashname);
+
+        // Determine the key
+
+        # block sizes of the hash algorithm
+        $block_size = BLOCK_SIZES[$hashname];
+
+        if ($block_size < strlen($key)) {
+            $key = hash($hashname, $key, true);
+        }
+        # the key length is equal to the block size
+        $key = str_pad($key, $block_size, "\0");
+
+        // Calculate the HMAC
+        hash_update($this->_outer, _xor($key, $opad));
+        hash_update($this->_inner, _xor($key, $ipad));
+
+    }
 }
 
 
