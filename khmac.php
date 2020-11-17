@@ -120,6 +120,9 @@ class KHMAC
         hash_update($this->_outer, _xor($key, $opad));
         hash_update($this->_inner, _xor($key, $ipad));
 
+        if ($msg) {
+            $this->update($msg);
+        }
     }
 
 
