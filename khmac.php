@@ -135,7 +135,20 @@ class KHMAC
     public function update($msg) {
         hash_update($this->_inner, $msg);
     }
-}
 
+    /**
+     * Return a `KHMAC` object for the current state
+     *
+     * @return HashContext
+     */
+    private function _final() {
+        $outer = hash_copy($this->_outer);
+        $inner = hash_final($this->_inner, true);
+        hash_update($outer, $inner);
+        return $outer;
+    }
+
+
+}
 
 ?>
