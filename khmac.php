@@ -121,6 +121,17 @@ class KHMAC
         hash_update($this->_inner, _xor($key, $ipad));
 
     }
+
+
+    /**
+     * Add msg into an active hashing object
+     *
+     * @param string $msg
+     * @return HashContext
+     */
+    public function update($msg) {
+        hash_update($this->_inner, $msg);
+    }
 }
 
 
