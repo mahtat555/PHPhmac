@@ -159,6 +159,16 @@ class KHMAC
         return hash_final($hash, true);
     }
 
+
+    /**
+     * Returns the hmac value as lowercase hexits
+     *
+     * @return string
+     */
+    public function hexdigest(){
+        $hash = $this->_final();
+        return hash_final($hash);
+    }
 }
 
 ?>
