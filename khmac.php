@@ -149,6 +149,16 @@ class KHMAC
     }
 
 
+    /**
+     * Returns the hmac value as raw binary data
+     *
+     * @return string
+     */
+    public function digest(){
+        $hash = $this->_final();
+        return hash_final($hash, true);
+    }
+
 }
 
 ?>
