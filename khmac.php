@@ -127,6 +127,15 @@ class KHMAC
 
 
     /**
+     * Returns a hash function name
+     * @return string
+     */
+    public function hashname() {
+        return $this->_hashname;
+    }
+
+
+    /**
      * Add msg into an active hashing object
      *
      * @param string $msg
