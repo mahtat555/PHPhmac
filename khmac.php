@@ -189,4 +189,23 @@ class KHMAC
     }
 }
 
+
+/**
+ * This function allows you to the generation of a MAC (Message Authentication
+ * Code) from a cryptographic hash function.
+ *
+ * @param string $key The secret key. This must be kept secret
+ * @param string $msg The data where HMAC is calculated
+ * @param string $hashname A hash function name
+ * @param boolean $hex
+ */
+function khmac($key, $msg, $hashname = "sha1", $hex = true) {
+    $khmac = new KHMAC($key, $msg, $hashname);
+    if ($hex) {
+        return $khmac->hexdigest();
+    }
+    return $khmac->digest();
+}
+
+
 ?>
