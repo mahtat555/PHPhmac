@@ -178,6 +178,15 @@ class KHMAC
         $hash = $this->_final();
         return hash_final($hash);
     }
+
+
+    /**
+     * Return a separate copy of this khamc object.
+     * @return HashContext
+     */
+    public function copy() {
+        return clone $this;
+    }
 }
 
 ?>
