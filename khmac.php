@@ -193,6 +193,22 @@ class KHMAC
     public function copy() {
         return clone $this;
     }
+
+
+    /**
+     * Check the equality of hmac
+     * @param mixed $hmac
+     * @return boolean
+     */
+    public function verify($hmac) {
+        if ($hmac instanceof KHMAC) {
+            $hmac = $hmac->hexdigest();
+        }
+        elseif (!is_hex($hamc)) {
+            $hmac = bin2hex($hmac);
+        }
+        return hash_equals($this->hexdigest(), $hmac);
+    }
 }
 
 
