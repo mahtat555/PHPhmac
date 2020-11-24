@@ -53,6 +53,12 @@ function _xor($key, $pad) {
     }
 }
 
+/**
+ * Create a alias to `ctype_xdigit` function.
+ * Check for character(s) representing a hexadecimal digit.
+ */
+use function ctype_xdigit as is_hex;
+
 
 /**
  * Class KHMAC.
