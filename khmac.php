@@ -158,7 +158,8 @@ class KHMAC
      */
     private function _final() {
         $outer = hash_copy($this->_outer);
-        $inner = hash_final($this->_inner, true);
+        $_inner = hash_copy($this->_inner);
+        $inner = hash_final($_inner, true);
         hash_update($outer, $inner);
         return $outer;
     }
