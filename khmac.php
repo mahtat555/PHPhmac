@@ -89,7 +89,7 @@ class KHMAC
      * @param string $msg The data where HMAC is calculated
      * @param string $hashname A hash function name
      */
-    public function __construct($key = "", $msg = "", $hashname = "sha1") {
+    public function __construct($key, $msg = "", $hashname = "sha1") {
         global $opad, $ipad;
         $this->_hashname = $hashname;
 
@@ -188,7 +188,7 @@ class KHMAC
 
 
     /**
-     * Return a separate copy of this khamc object.
+     * Return a separate copy of this khmac object.
      * @return HashContext
      */
     public function copy() {
@@ -205,7 +205,7 @@ class KHMAC
         if ($hmac instanceof KHMAC) {
             $hmac = $hmac->hexdigest();
         }
-        elseif (!is_hex($hamc)) {
+        elseif (!is_hex($hmac)) {
             $hmac = bin2hex($hmac);
         }
         return hash_equals($this->hexdigest(), $hmac);
